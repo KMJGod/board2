@@ -42,7 +42,7 @@ public class BoardRepositoryTests {
     @Transactional
     @Test
     public void testRead1(){
-        Optional<Board> result = boardRepository.findById(100L);//100L은 검색할 글번호
+        Optional<Board> result = boardRepository.findById(100L);//100L은 검색할 글번호.
 
         Board board = result.get();
         System.out.println(board);
