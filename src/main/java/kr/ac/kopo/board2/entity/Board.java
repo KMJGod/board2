@@ -24,4 +24,12 @@ public class Board extends BaseEntity{
 // 지연(Lazy) 로딩 방식 설정
     @ManyToOne(fetch = FetchType.LAZY)
     private Member writer; //실제 board 테이블에는 writer_email 컬럼이 생성되고 FK(Member 테이블의 email컬럼값만 참조하기 위해)가 설정됨
+
+    public void changeTitle(String title){
+        this.title = title;
+    }
+
+    public void changeContent(String content) {
+        this.content = content;
+    }
 }
