@@ -6,6 +6,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 @RestController
 @Log4j2
 public class UploadController {
@@ -18,6 +23,12 @@ public class UploadController {
             String originalName = uploadFile.getOriginalFilename();
             String fileName = originalName.substring(originalName.lastIndexOf("\\")+1);
             log.info("파일명: "+ fileName);
+            Path savePath = Paths.get(uploadPath+ File.separator+fileName);
+            try {
+                uploadFile.transferTo(savePath);
+            }catch (IOException e){
+
+            }
 
         }
     }
